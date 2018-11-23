@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Preview</title>
+</head>
+<body>
+
+<h1>HTML 문장 입니다.</h1>
+
+<p id="ex01"></p>
+<p id="ex02" class="ex01class"></p>
+<p class="ex01class"></p>
+
+<script>
+document.getElementById("ex01").innerHTML = 'Hello, JS Default!'
+document.getElementById("ex02").innerHTML = 'EX02 ID Write'
+document.getElementsByClassName("ex01class")[0].innerHTML = 'EX01 Class Write'
+document.getElementsByClassName("ex01class")[1].innerHTML = 'EX01 Class Write'
+document.write('개행 문자열을 씁니다.')
+document.write('<p style="color : red;">HTML 태그도 가능합니다.</p>')
+document.writeln('한 줄로')
+document.writeln('씁니다.')
+window.alert('알림 창에 씁니다.')
+console.log('콘솔 안에 씁니다.')
+</script>
+
+</body>
+</html>
