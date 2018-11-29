@@ -49,7 +49,7 @@ JavaScript 엔진이 스크립트 파일을 로드하고 파싱하여 실행한 
 
 ## References
 
-- PoiemaWeb JavaScript 3~4장 요약 정리
+- JavaScript 환경 및 실행 과정(PoiemaWeb 참조)
     
     - https://poiemaweb.com/js-hello-world
     - https://poiemaweb.com/js-browser

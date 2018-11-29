@@ -127,7 +127,7 @@ console.log( false && a ); // false
 console.log( a && true ); // true
 ```
 
-이를 유용하게 사용하는 경우는 JavaScript 객체의 null 값인 경우를 고려하고 Property 를 가져올 때 유용하게 사용합니다. 즉, Null Pointer Exception 에 대해 대비할 수 있습니다.
+이는 JavaScript 객체의 null 값인 경우를 고려하고 Property 를 가져올 때 유용하게 사용합니다. 즉, Null Pointer Exception 을 대비할 수 있습니다.
 
 ```javascript
 var person = {

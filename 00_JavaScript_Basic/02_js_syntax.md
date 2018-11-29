@@ -199,7 +199,7 @@ console.log(person[key]); // 김
 
 ## References
 
-- JavaScript 기본 문법 요소
+- JavaScript 기본 문법 요소(PoiemaWeb 참조)
 
     - https://poiemaweb.com/js-syntax-basics
     - https://poiemaweb.com/js-data-type-variable

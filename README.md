@@ -8,11 +8,15 @@
 
 0. JavaScript Basic
    
-    - JavaScript 소개
+    - [JavaScript 소개](./00_JavaScript_Basic/00_introduction.md)
   
-    - JavaScript 환경
+    - [JavaScript 환경](./00_JavaScript_Basic/01_js_enviromnent.md)
   
-    - JavaScript 기초 문법
+    - [JavaScript 기초 문법](./00_JavaScript_Basic/02_js_syntax.md)
+
+    - [JavaScript 타입 자동 변환](./00_JavaScript_Basic/03_js_type_coercion.md)
+    
+    - [JavaScript 객체](./00_JavaScript_Basic/04_js_object.md)
 
 
 ## Author

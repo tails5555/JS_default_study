@@ -48,6 +48,6 @@ Client Side API 의 요소는 크게 5가지로 나뉩니다.
 
 ## References
 
-- PoiemaWeb JavaScript 2장 요약 정리
+- JavaScript 개요(PoiemaWeb 참조)
     
     - https://poiemaweb.com/js-introduction
