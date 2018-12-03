@@ -158,3 +158,232 @@ var plus_four = function(number) {
 실제 JavaScript 함수를 작성할 때 함수 표현식을 권장하는 이유를 추측하면, 함수 호이스팅에서는 함수를 호출하기 **전에** 반드시 함수를 선언해야 하는 규칙을 무시합니다.
 
 또한 대규모 Application 을 개발할 때 인터프리터가 너무 많은 코드를 Variable Object 에 저장하면 응답속도가 떨어지는 이유도 있습니다.
+
+## First Class Object
+
+일급 객체(1st-Class Object) 는 생성, 대입, 연산, 인자, 반환 값으로 전달 등 프로그래밍 언어의 기본적인 조작을 제한없이 사용할 수 있는 대상을 뜻합니다.
+
+일급 객체는 다음과 같은 조건을 만족합니다.
+
+> - 무명의 리터럴로 표현할 수 있습니다.
+> - 변수나 자료구조(객체, 배열 등)에 저장할 수 있습니다.
+> - 함수의 파라미터로 전달할 수 있습니다.
+> - 반환 값으로 사용할 수 있습니다.
+
+아래는 JavaScript 에서 함수는 일급 객체임을 만족하는 사례를 코드로 작성하였습니다.
+
+```javascript
+// 첫 번째 조건을 만족합니다.
+var hello = function(name) {
+    return `Hello, ${name}!`;
+}
+
+var bye = function(name) {
+    return `Bye, ${name}`;
+}
+
+// 두 번째 조건을 만족합니다.
+var greeting = {
+    morning : hello,
+    evening : bye
+}
+
+// 세 번째 조건을 만족합니다.
+function greeting_func(func, name) {
+    return func(name);
+}
+
+console.log(greeting_func(moring, '강사람')); // Hello, 강사람
+
+// 네 번째 조건을 만족합니다.
+function good_night(name) {
+    return function() {
+        console.log(`Good Night, ${name}`);
+    }
+}
+
+var night_func = good_night('강사람');
+console.log(night_func());
+```
+
+## Call-By-Value, Call-By-Reference
+
+원시 타입 인수는 Call-By-Value 로 동작합니다. 그리고 이외의 타입 인수는 Call-By-Reference 로 동작합니다.
+
+객체 타입의 변수는 Reference 를 함수에 넘겨서 객체의 값들을 복사하지 않고 전달합니다. 
+
+원시 타입 인수는 함수를 빠져나오고 난 후에 값의 변화는 없지만, 객체 타입 인수는 함수를 빠져나오고 난 후에 함수의 문장에 따라 변경됩니다.
+
+```javascript
+var money = 1000;
+var car = {
+    status : '기름필요',
+    liter : 10
+};
+
+function charge(money, car){
+    money -= 500;
+    car['status'] = '만땅';
+    car['liter'] = 100
+}
+
+charge(money, car);
+console.log(money); // 1000
+console.log(car); // { status : '만땅', liter : 100 }
+```
+
+## Function Property
+
+우리가 만든 함수이든 모든 함수는 Property 를 생성할 수 있습니다. 그렇지만 일반 객체와는 다른 함수만의 표준 프로퍼티를 가집니다.
+
+1. Arguments Property 
+
+JavaScript 는 다른 언어와는 달리 유동적인 Arguments(인수) 들을 작성할 수 있습니다. 원래 요구했던 매개변수의 인수의 갯수가 많아지면 이를 참고해서 인수 값을 가져옵니다.
+
+이는 함수 내부에서만 작성할 수 있습니다. 결과 값은 배열처럼 생겼지만 인덱스를 프로퍼티로 가지는 객체가 나옵니다. 이를 유사 배열 객체(Array-Like Object) 라고 합니다. 유사 배열 객체는 `length` 프로퍼티를 가집니다.
+
+```javascript
+function add(a, b){
+    console.log(arguments);
+    return a + b;
+}
+
+add(1); // { '0' : 1 }
+add(1, 2); // { '0' : 1, '1' : 2 }
+add(1, 2, 3); // { '0' : 1, '1' : 2, '2' : 3 }
+
+// 이는 유사 배열 객체를 사용한 가변 인자 덧셈 함수 입니다.
+function multi_add() {
+    if(!arguments.length) return 0;
+
+    var arr = Array.prototype.slice.call(arguments);
+    return arr.reduce((pre, cur) => pre + cur);
+}
+
+multi_add(10, 20, 30); // 결과 값은 60이 나옵니다.
+```
+
+2. caller Property
+
+caller 프로퍼티는 함수를 호출한 함수 객체를 반환합니다.
+
+```javascript
+function func(f) {
+    var res = f();
+    return res;
+}
+
+function func_tmp(){
+    return func_tmp.caller;
+}
+
+console.log(func_tmp()); // null
+console.log(func(func_tmp)); // function func(f) { ... }
+```
+
+3. length Property
+
+length 프로퍼티는 함수 정의할 때의 매개 변수의 개수 입니다.
+
+`arguments.length` 는 함수를 호출할 때 작성한 인자의 개수 입니다. 햇깔리지 맙시다.
+
+```javascript
+function add(a, b, c){
+    console.log(add.length);
+    return a + b + c;
+}
+
+add(1, 2, 3); // 3
+```
+
+4. name Property
+
+말 그대로 함수의 이름 프로퍼티 입니다. 이름 있는 함수는 함수 이름을 반환하고, 무명 함수는 가리키는 변수의 이름을 반환합니다. (PoiemaWeb 에 오타가 있습니다.)
+
+```javascript
+var add = function(a, b){
+    return a + b;
+}
+
+function minus(a, b) {
+    return a - b;
+}
+
+console.log(add.name); // 'add'
+console.log(minus.name); // 'minus'
+```
+
+## Types Of Function
+
+1. 즉시 실행 함수(IIFE, Immediately Invoke Function Expression)
+
+함수 정의와 동시에 실행되는 함수 입니다. 이는 최초 한 번만 호출되어 다시는 호출할 수 없습니다.
+
+```javascript
+// add 함수. 실행 결과 값은 9.
+// 그러나 이름도 의미 없습니다. 
+(function add(x, y) {
+    return x + y;
+}(4, 5)); 
+
+(function (x, y) {
+    return x - y;
+}(3, 2)); // 실행 결과는 1.
+```
+
+실제로는 많이 쓰이지 않을 것 같지만 하나의 글로벌 스코프(Global Scope) 에 선언된 변수나 함수에 대하여 동일한 이름의 이들을 해결하기 위해 사용합니다. 예를 들어 jQuery 라이브러리와 다른 라이브러리를 동시에 사용할 때 변수 이름 충돌 문제를 방지하는 목적으로 사용합니다.
+
+2. 내부 함수(Inner Function)
+
+함수 내부에 정의된 함수를 내부 함수(Inner Function) 라고 합니다. 
+
+내부 함수는 이의 부모 함수에 있는 변수를 접근할 수 있습니다. 반대로 부모가 내부 함수에 있는 변수를 접근할 수 없습니다. 
+
+마치 어린이가 부모님께 장난감을 뺏기지 않으려는 장면과 같습니다.
+
+또한 내부함수는 부모함수 외부에 호출할 수 없습니다. 내부 함수에 대한 개념은 클로저(Closure) 에서 더욱 상세히 다루겠습니다.
+
+```javascript
+function parent(toy){
+    var newToy = toy;
+    function child() {
+        var ownToy = '마징가Z';
+        console.log(newToy); // '곰인형'
+    }
+    child();
+    console.log(ownToy); // 접근 불가.
+}
+
+parent('곰인형');
+child(); // 접근 불가.
+```
+
+3. 콜백 함수(Callback Function)
+
+> JavaScript 의 함수가 중요한 이유!
+
+명시적인 호출이 이뤄지지 않고 어느 특정 이벤트나 타이머에 따라 호출되는 함수가 필요합니다. 이를 콜백 함수라고 합니다.
+
+이는 React.js 에서도 `onClick`, `onSubmit` 함수 등으로 많이 설정했습니다. 이처럼 콜백 함수는 익명 함수가 매개 변수를 통해 전달 되고 이 내부에서 어느 특정 시점에서 실행이 됩니다.
+
+```javascript
+// 타이머에 따른 이벤트 시
+setTimeout(function(){
+    console.log('안녕');
+}, 2000);
+
+// 버튼 클릭 이벤트 시
+var btn = document.getElementById('myBtn');
+btn.addEventListener('click', function() {
+    console.log('Hello');
+});
+```
+
+콜백 함수는 비동기식 처리 모델에서 주로 사용 됩니다. 이의 개념은 후술 하겠지만, 어느 이벤트 처리가 종료 되면 호출되는 함수를 매개변수에 전달하고 동시에 호출하는 개념 입니다.
+
+콜백 함수는 콜백 큐 메모리에 있다가 해당 이벤트가 발생하면 호출 합니다. 참고로 콜백 함수는 클로저 입니다.
+
+## References
+
+- PoiemaWeb 참조 사이트
+    - https://poiemaweb.com/js-function
