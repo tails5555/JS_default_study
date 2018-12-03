@@ -112,4 +112,49 @@ var half = function half(num) {
 
 ## Function Hoistin'
 
-함수를 정의하는 방법의 차이점이 드러나는 개념이 바로 호이스팅(Hoistin') 입니다.
+함수를 정의하는 방법의 차이점이 드러나는 개념이 바로 호이스팅(Hoistin') 입니다. 우선 Only 함수 이름으로만 생성하였을 때의 호이스팅은 다음과 같습니다.
+
+```javascript
+// case example
+var value = plus_four(4);
+console.log(value); // undefined 가 아니라 8이 나옵니다.
+
+function plus_four(number) {
+    return number + 4;
+}
+
+// same as
+var value = undefined;
+function plus_four(number) {
+    return number + 4;
+}
+
+value = plus_four(4);
+console.log(value); // 8
+```
+
+선언문으로 함수가 정의되면, 이를 선언하기 이전의 시점에서 호출이 가능합니다. 전방에 선언이 됐든, 후방에 선언이 됐든 호출이 가능한 개념이 호이스팅(Hoistin') 이라는 사실은 이미 이전에 공부 했습니다.
+
+그래서 선언문으로 정의된 함수는 자바스크립트 엔진이 스크립트가 로딩되는 시점에서 바로 초기화 하여 Variable Object 에 저장을 합니다. 이를 통해 **함수 선언, 초기화, 할당이 한 번에 이뤄져서** 호이스팅이 가능하게 된 것입니다.
+
+## Variable Hoistin'
+
+그러나 함수 표현식을 사용하여 초기화를 했을 경우에는 어떤 차이가 있는지 알아 보겠습니다.
+
+```javascript
+// case example
+var value = plus_four(50); // plus_four is not a function.
+var plus_four = function(number) {
+    return number + 4;
+}
+```
+
+함수 표현식을 이용하면 함수 호이스팅이 아닌 변수 호이스팅이 발생합니다. 
+
+변수 호이스팅은 **변수 생성, 초기화, 할당이 따로 분리되어 실행** 됩니다. 호이스팅된 변수는 `undefined` 로 초기화되고 실제 값 할당은 할당문에서 이뤄집니다. 그래서 스크립트 로딩 시점에서 변수 객체(Variable Object) 에 할당하지 않고 Runtime 에서 해석하고 실행 됩니다.
+
+이 두 개념들을 통해 함수 호이스팅과 변수 호이스팅의 차이에 대해 알아둘 필요가 있습니다.
+
+실제 JavaScript 함수를 작성할 때 함수 표현식을 권장하는 이유를 추측하면, 함수 호이스팅에서는 함수를 호출하기 **전에** 반드시 함수를 선언해야 하는 규칙을 무시합니다.
+
+또한 대규모 Application 을 개발할 때 인터프리터가 너무 많은 코드를 Variable Object 에 저장하면 응답속도가 떨어지는 이유도 있습니다.
