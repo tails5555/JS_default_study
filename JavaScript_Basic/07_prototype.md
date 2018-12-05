@@ -158,7 +158,7 @@ function Student(name, grade){
 var std = new Student('강학생', 4);
 
 // 아래의 문장들은 전부 true 을 반환 합니다.
-// 1. 함수는 객체의 일부이기 때문에 함수의 프로토타입의 __proto__ 는 Object 의 prototype 과 같습니다.
+// 함수는 객체의 일부이기 때문에 함수의 프로토타입의 __proto__ 는 Object 의 prototype 과 같습니다.
 console.log(Function.prototype.__proto__ === Object.prototype);
 
 // Student 생성자 함수의 __proto__ 는 함수의 프로토타입과 같습니다.

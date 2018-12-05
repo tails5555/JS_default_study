@@ -6,18 +6,25 @@
 
 ## Contexts
 
-0. JavaScript Basic
+**JavaScript Basic**
    
-    - [JavaScript 소개](./00_JavaScript_Basic/00_introduction.md)
-  
-    - [JavaScript 환경](./00_JavaScript_Basic/01_js_enviromnent.md)
-  
-    - [JavaScript 기초 문법](./00_JavaScript_Basic/02_js_syntax.md)
+- [JavaScript 소개](./JavaScript_Basic/00_introduction.md)
 
-    - [JavaScript 타입 자동 변환](./00_JavaScript_Basic/03_js_type_coercion.md)
-    
-    - [JavaScript 객체](./00_JavaScript_Basic/04_js_object.md)
+- [JavaScript 환경](./JavaScript_Basic/01_js_enviromnent.md)
 
+- [JavaScript 기초 문법](./JavaScript_Basic/02_js_syntax.md)
+
+- [JavaScript 타입 자동 변환](./JavaScript_Basic/03_js_type_coercion.md)
+
+- [JavaScript 객체](./JavaScript_Basic/04_js_object.md)
+
+- [객체의 불변성](./JavaScript_Basic/05_object_immutable.md)
+
+- [함수(Function)](./JavaScript_Basic/06_function.md)
+
+- [프로토타입(Prototype)](./JavaScript_Basic/07_prototype.md)
+
+- [스코프(Scope)](./JavaScript_Basic/08_scope.md)
 
 ## Author
 
