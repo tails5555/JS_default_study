@@ -26,6 +26,8 @@
 
 - [스코프(Scope)](./JavaScript_Basic/08_scope.md)
 
+- [타입 체크와 Strict Mode](./JavaScript_Basic/09_type_and_strict.md)
+
 ## Author
 
 - 강인성([tails5555](https://github.com/tails5555))
