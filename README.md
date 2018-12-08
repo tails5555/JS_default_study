@@ -28,6 +28,18 @@
 
 - [타입 체크와 Strict Mode](./JavaScript_Basic/09_type_and_strict.md)
 
+- [This Keyword](./JavaScript_Basic/10_this_keyword.md)
+
+**Exercise Source**
+
+- [Hello, World](./study_source/01_Hello_World)
+
+- [Scope](./study_source/08_Scope)
+
+- [Type And Strict](./study_source/09_Type_And_Strict)
+
+- [This Keyword](./study_source/10_This_Keyword)
+
 ## Author
 
 - 강인성([tails5555](https://github.com/tails5555))

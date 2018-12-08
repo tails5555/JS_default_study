@@ -1,7 +1,7 @@
 # Prototype Object(`__proto__`)
 
 > - 생각보다 많이 햇깔리고 약간 어렵기 때문에 여러 번 읽어 보는 것을 권장합니다.
-> - 추가로 Prototype 프로퍼티와 `[[Prototype]]` 의 혼돈을 막기 위해 각각 `prototype`(혹은 프로토타입) 프로퍼티, `__proto__`(오직 이거로만) 로 설명 하겠습니다.
+> - 추가로 Prototype 프로퍼티와 `[[Prototype]]` 의 혼돈을 막기 위해 각각 `prototype`(혹은 프로토타입) 프로퍼티, `__proto__`(오직 이거로만. 프로토타입 객체.) 로 설명 하겠습니다.
 
 대부분 객체 지향 프로그래밍 언어는 클래스 기반 입니다. 그렇지만 JavaScript 는 Prototype 기반 객체 지향 언어 입니다. 
 
@@ -59,7 +59,7 @@ console.log(Person.prototype === person.__proto__); // true
  
 ## Constructor Property
 
-모든 프로토타입 객체는 constructor 프로퍼티를 항상 가집니다. 이는 객체의 입장에서 자신을 생성한 객체를 가리킵니다.
+모든 프로토타입 객체(`__proto__`)는 constructor 프로퍼티를 항상 가집니다. 이는 객체의 입장에서 자신을 생성한 객체를 가리킵니다.
 
 ```javascript
 function Student(name, grade){
@@ -182,7 +182,7 @@ console.log(std.__proto__ === Student.prototype);
 
 ## Extension of Prototype Object
 
-프로토타입 객체도 객체 입니다. 일반 객체 처럼 프로퍼티를 언제든지 추가, 삭제할 수 있습니다. 이 프로퍼티에 대해서는 즉시 프로토타입 체인에 반영이 됩니다.
+프로토타입 객체(`__proto__`)도 객체 입니다. 일반 객체 처럼 프로퍼티를 언제든지 추가, 삭제할 수 있습니다. 이 프로퍼티에 대해서는 즉시 프로토타입 체인에 반영이 됩니다.
 
 ```javascript
 function Student(name, grade){
