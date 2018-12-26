@@ -281,3 +281,7 @@ console.log(OBJ.global_y); // 'OBJ' is not defined.
 
 - PoiemaWeb 참조 사이트
     - https://poiemaweb.com/js-scope
+
+## Author
+
+- 강인성([tails5555](https://github.com/tails5555))

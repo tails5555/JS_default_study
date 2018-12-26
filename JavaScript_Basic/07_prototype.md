@@ -296,3 +296,7 @@ console.log(std1.grade, std2.grade); // 1, 2
 
 - PoiemaWeb 참조 사이트
     - https://poiemaweb.com/js-prototype
+
+## Author
+
+- 강인성([tails5555](https://github.com/tails5555))

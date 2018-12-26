@@ -73,7 +73,11 @@ Variable Object 는 EC 의 프로퍼티의 일부로 다른 객체를 각각 가
 > 
 > 하지만 프로토타입 체인(Prototype Chain) 은 전역 객체 이외의 객체 프로퍼티(메소드도 포함 됩니다.) 를 검색하는 메커니즘의 구조 입니다.
 
-JavaScript 엔진은 Scope Chain 을 통하여 Lexical Scope 를(렉시컬 스코프. 함수의 호출에 따라 변수의 스코프를 결정하는 개념. 이는 8번 노트에서 참고하시길 바랍니다.) 파악합니다.
+JavaScript 엔진은 Scope Chain 을 통하여 Lexical Scope 를(렉시컬 스코프. 함수의 호출에 따라 변수의 스코프를 결정하는 개념. 이는 8번 노트에서 참고하시길 바랍니다.) 파악합니다. 
+
+함수 중첩 상태에서 하위 함수 안에서 상위 함수의 스코프와 전역 스코프까지 참조할 수 있습니다. 이는 스코프 체인 검색을 통해 가능합니다. 중첩될 때마다 부모 함수의 Scope 가 자식 함수의 스코프 체인에 포함 됩니다. 함수 실행 중에 변수를 만나면 그 변수를 Activation Object 에서 검색하고, 없는 경우에는 스코프 체인에 담긴 순서대로 검색을 이어가게 됩니다.
+
+스코프 체인(Scope Chain) 은 함수의 프로퍼티인 `[[Scope]]` 로 참조할 수 있습니다.
 
 3. `this` Value
 
@@ -82,3 +86,18 @@ JavaScript 엔진은 Scope Chain 을 통하여 Lexical Scope 를(렉시컬 스�
 이는 아래 링크를 통해 참고하시길 바랍니다.
 
 [this 노트 바로 가기](./10_this_keyword.md)
+
+## Reference About Execution Context
+
+실행 컨텍스트의 생성 과정에 대해서는 아래 링크를 참조하시길 바랍니다.
+
+[링크 참조](https://poiemaweb.com/js-execution-context#3-%EC%8B%A4%ED%96%89-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9D%98-%EC%83%9D%EC%84%B1-%EA%B3%BC%EC%A0%95)
+
+## References
+
+- PoiemaWeb 참조 사이트
+    - https://poiemaweb.com/js-execution-context
+
+## Author
+
+- 강인성([tails5555](https://github.com/tails5555))

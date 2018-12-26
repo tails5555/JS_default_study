@@ -241,3 +241,7 @@ console.log(a);
 - PoiemaWeb 참조 사이트
     - https://poiemaweb.com/js-type-check
     - https://poiemaweb.com/js-strict-mode
+
+## Author
+
+- 강인성([tails5555](https://github.com/tails5555))

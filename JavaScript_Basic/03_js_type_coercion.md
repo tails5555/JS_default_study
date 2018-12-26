@@ -156,3 +156,7 @@ console.log(person.name && ( person.name.first || person.name.second )); // 이 
 
 - 생활코딩 사이트 Boolean 객체 참조
     - https://opentutorials.org/course/50/42
+
+## Author
+
+- 강인성([tails5555](https://github.com/tails5555))

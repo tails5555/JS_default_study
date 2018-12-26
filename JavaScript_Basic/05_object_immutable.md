@@ -188,3 +188,7 @@ console.log(person1['interested']['front']); // ['angular', 'react']
 
 - Immutable.js 사이트
     - https://facebook.github.io/immutable-js/
+
+## Author
+
+- 강인성([tails5555](https://github.com/tails5555))

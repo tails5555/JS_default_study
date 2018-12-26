@@ -204,3 +204,7 @@ console.log(person[key]); // 김
     - https://poiemaweb.com/js-syntax-basics
     - https://poiemaweb.com/js-data-type-variable
     - https://poiemaweb.com/js-operator
+
+## Author
+
+- 강인성([tails5555](https://github.com/tails5555))

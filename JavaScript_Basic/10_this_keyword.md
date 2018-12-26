@@ -455,6 +455,11 @@ export default MyCounter;
 
 참고로 이번 문서와 관련된 예제를 추가로 작성했습니다. `apply`, `call`, `bind` 메소드 사용을 인지하기 위한 예제입니다. 각 사각형들은 `apply`, `call` 메소드를 이용해서 만들고, `bind` 메소드는 버튼에 Event Listener 를 추가하여 사각형을 보이거나 없애거나 둘 중 하나를 작업합니다.
 
+## References
+
+- PoiemaWeb 참조 사이트
+    - https://poiemaweb.com/js-this
+
 ## Author
 
 - 강인성([tails5555](https://github.com/tails5555))

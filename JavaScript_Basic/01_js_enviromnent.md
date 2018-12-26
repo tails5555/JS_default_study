@@ -58,3 +58,7 @@ JavaScript 엔진이 스크립트 파일을 로드하고 파싱하여 실행한 
 
     - https://d2.naver.com/helloworld/59361
     - 참고로 이 문서에 대해 좋은 내용이 워낙 많아서 한 번 시간 잡고 읽어 보고 난 후에 정리하겠습니다!
+
+## Author
+
+- 강인성([tails5555](https://github.com/tails5555))
